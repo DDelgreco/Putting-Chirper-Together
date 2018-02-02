@@ -12,7 +12,7 @@
     "watch:client": "webpack --watch",
     "watch:server": "nodemon --watch server/src --exec \"npm run build:server && npm run start:server\""
   },
-  "author": "Covalence",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.26.0",
