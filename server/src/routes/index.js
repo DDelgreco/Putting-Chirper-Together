@@ -1,9 +1,11 @@
-import { Router } from 'express';
-import peopleRouter from './people';
+import { Router } from "express";
+import chirpsRouter from "./chirps";
+import mentionsRouter from "./mentions";
+import singleChirpRouter from "./singleChirp";
 
 let router = Router();
-let app = express.Router();
-app.use("/chirps", chirpsRouter);
-router.use('/people', peopleRouter);
 
+router.use("/chirps", chirpsRouter);
+router.use("/mentions", mentionsRouter);
+router.use("/chirps/:id", singleChirpRouter)
 export default router;
