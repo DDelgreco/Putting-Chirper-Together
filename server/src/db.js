@@ -29,11 +29,11 @@ export let getChirps = () => {
 export let getChirp = id => {
   return new Promise((resolve, reject) => {
     connection.query(
-      `SELECT * FROM chirps WHERE id=${id}`,
+      `SELECT u.name as userName, c.id, c.location, c.text, c._created FROM chirps c JOIN users u on c.userid = u.id WHERE c.id=${id}`,
       (err, results, fields) => {
         if (err) {
           reject();
-          connection.end();
+    
           return console.log(err);
         }
         resolve(results[0]);
@@ -47,7 +47,7 @@ export let getMentions = userId => {
       `CALL spGetMentions(${userId})`,
       (error, results, field) => {
         if (error) {
-          connection.end();
+          
           reject(error);
         }
         resolve(results);
@@ -62,7 +62,7 @@ export let postChirp = chirp => {
     VALUES ( ${chirp.userid}, '${chirp.text}', '${chirp.location}');`,
       (error, results, field) => {
         if (error) {
-          connection.end();
+       
           reject(error);
         }
         resolve(results);
@@ -78,7 +78,7 @@ export let updateChirp = (id, chirp) => {
     WHERE id = ${id};`,
       (error, results, field) => {
         if (error) {
-          connection.end();
+        
           reject(error);
         }
         resolve(results);
@@ -92,7 +92,7 @@ export let deleteChirp = id => {
       `DELETE FROM chirps WHERE id=${id}`,
       (error, results, field) => {
         if (error) {
-          connection.end();
+     
           reject(error);
         }
         resolve(results);

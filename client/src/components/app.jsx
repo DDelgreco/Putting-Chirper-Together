@@ -1,33 +1,25 @@
-import React, { Component } from "react";
-import Chirps from "./Chirps";
-import NewChirp from "./NewChirp";
-// import Logo from "../../../bird.jpg";
+import React, { Component, Fragment } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import HomePage from "./HomePage";
+import SingleChirp from "./SingleChirp";
+import Mentions from "./Mentions";
+import SingleMention from "./SingleMention"
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      chirpArray: [
-      ]
-    };
-  }
-  handleNewChirp(message) {
-    let newChirpArray = [...this.state.chirpArray];
-    newChirpArray.push(message);
-    this.setState({ chirpArray: newChirpArray });
-  }
   render() {
     return (
-      <div className="container">
-        <img src="" className="" alt="" />
-        <h1 className="App-title font-bold">Welcome to Chirper!</h1>
-        <NewChirp handleNewChirp={message => this.handleNewChirp(message)} />
-        <Chirps list={this.state.chirpArray} />
-      </div>
+      <Router>
+        <Fragment>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/:id" component={SingleChirp} />
+            <Route exact path="/mentions" component={Mentions} />}
+            <Route exact path="/mentions/:id" component={SingleMention} />}
+          </Switch>
+        </Fragment>
+      </Router>
     );
   }
-
 }
-
 
 export default App;

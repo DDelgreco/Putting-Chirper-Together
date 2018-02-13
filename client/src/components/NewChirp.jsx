@@ -9,7 +9,7 @@ class NewChirp extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    this.props.handleNewChirp(this.state.message);
+    this.props.handleNewMention(this.state.message);
   }
   handleChange(value) {
     this.setState({ message: value });

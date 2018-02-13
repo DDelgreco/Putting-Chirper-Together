@@ -9,5 +9,10 @@ router.get("/:userid", (req, res) => {
     res.send(data);
   });
 });
+router.get("/:id", (req, res) => {
+  getMention(req.params.id).then(data => {
+    res.send(data);
+  });
+});
 
 export default router;
